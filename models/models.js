@@ -4,7 +4,7 @@
 
 /* See http://stackoverflow.com/questions/10081611/mongoose-schema-creation */
 
-var models = ['user.js'];
+var models = ['user.js', 'thread.js', 'post.js'];
 
 exports.initialize = function()
 {
