@@ -1,8 +1,64 @@
 body {
   padding: 50px;
   font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background: url('bg.jpg');
+
 }
 
 a {
   color: #00B7FF;
+}
+
+nav {
+    font-family: buzz, "sans-serif";
+    text-transform: uppercase;
+}
+
+.vertical-center {
+    min-height: 80vh; /* These two lines are counted as one :-)       */
+
+    display: flex;
+    align-items: center;
+}
+
+@font-face {
+    font-family: buzz, "sans-serif";
+    src: url('MODERNE SANS.ttf');
+}
+
+button {
+    text-transform: uppercase;
+    width: 40%;
+    font-size: 150%;
+}
+
+h1 {
+    font-family: buzz, "sans-serif";
+    text-transform: uppercase;
+}
+
+::-webkit-input-placeholder {
+    font-family: buzz, "sans-serif";
+    text-transform: uppercase;
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    font-family: buzz, "sans-serif";
+    text-transform: uppercase;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    font-family: buzz, "sans-serif";
+    text-transform: uppercase;
+}
+
+:-ms-input-placeholder {
+    font-family: buzz, "sans-serif";
+    text-transform: uppercase;
+}
+
+#buzzTitle {
+    color: limegreen;
 }
