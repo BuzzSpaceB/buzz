@@ -10,7 +10,7 @@ a {
 }
 
 nav {
-    font-family: buzz, "sans-serif";
+    font-family: buzz;
     text-transform: uppercase;
 }
 
@@ -22,7 +22,7 @@ nav {
 }
 
 @font-face {
-    font-family: buzz, "sans-serif";
+    font-family: buzz;
     src: url('MODERNE SANS.ttf');
 }
 
@@ -33,32 +33,41 @@ button {
 }
 
 h1 {
-    font-family: buzz, "sans-serif";
+    font-family: buzz;
     text-transform: uppercase;
 }
 
 ::-webkit-input-placeholder {
-    font-family: buzz, "sans-serif";
+    font-family: buzz;
     text-transform: uppercase;
 }
 
 :-moz-placeholder {
     /* Firefox 18- */
-    font-family: buzz, "sans-serif";
+    font-family: buzz;
     text-transform: uppercase;
 }
 
 ::-moz-placeholder {
     /* Firefox 19+ */
-    font-family: buzz, "sans-serif";
+    font-family: buzz;
     text-transform: uppercase;
 }
 
 :-ms-input-placeholder {
-    font-family: buzz, "sans-serif";
+    font-family: buzz;
     text-transform: uppercase;
 }
 
 #buzzTitle {
-    color: limegreen;
+    color: #5cb85c;
+}
+
+#brand {
+    color: #5cb85c;
+}
+
+#brand:hover, #link:hover {
+    background-color: #5cb85c;
+    color: white;
 }
