@@ -2,7 +2,7 @@ body {
   padding: 50px;
   font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
     background: url('bg.jpg');
-
+    font-size: 200%;
 }
 
 a {
@@ -34,6 +34,7 @@ h1 {
     font-family: buzz;
     font-size: 150%;
     text-transform: uppercase;
+    margin: 0;
 }
 
 #signIn {
@@ -116,6 +117,118 @@ h1 {
     color: white;
 }
 
-.containerBg {
+.navbar .nav,
+.navbar .nav > li {
+    float: none;
+    display: inline-block;
+    vertical-align: top;
+}
 
+.navbar-inner {
+    text-align: center;
+}
+
+.navbar {
+    margin: 0;
+    float: left;
+}
+
+.pageTitle {
+    background-color: white;
+    border: 5px solid #5cb85c;
+    padding: .1em;
+}
+
+.spacesStyle {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #5cb85c;
+    margin: auto;
+}
+
+.logo {
+    text-align: center;
+    width: 100px;
+    margin: auto;
+
+}
+
+.container-full {
+    margin: 0 auto;
+    width: 100%;
+    margin-top: -0.5%;
+}
+
+.buzzSpace {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 1em;
+    border: 5px solid #5cb85c;
+
+}
+
+.buzzSpace > ul {
+    margin: 0;
+    padding: 0;
+}
+
+.buzzSpace > ul > li {
+    list-style-type: none;
+}
+
+.space {
+    background: rgba(255, 255, 255, 1);
+    padding: 1em;
+    padding-bottom: 2em;
+    border: 1px solid #5cb85c;
+    margin-bottom: 2%;
+
+}
+
+.space:last-child {
+    margin-bottom: 0%;
+}
+
+.space a {
+    color: #5cb85c;
+}
+
+/* responsive text queries */
+@media screen and (max-width: 992px) {
+    p, .btn, input, div, span, h4 {
+        font-size: 95%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    p, .btn, input, div, span, h4 {
+        font-size: 90%;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+}
+
+.center {
+    width: 100%;
+    margin: 0 auto;
 }
