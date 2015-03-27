@@ -27,12 +27,29 @@ router.get('/spaces',  isLoggedIn, function(req, res) {
     res.render('spaces', { title: 'D3', content: 'spaces' });
 });
 
+router.param("moduleCode", function (req, res, next, moduleCode) {
+    console.log("Validating " + moduleCode);
+    next();
+})
+router.param("threadID", function (req, res, next, threadID) {
+    console.log("Validating 2" + threadID);
+    if (threadID == null) {
+        next();
+    }
+})
+router.get('/spaces/:moduleCode', isLoggedIn, function (req, res) {
+    res.render('threads', {title: 'D3', content: 'This is the module code for a thread'});
+});
+router.get('/spaces/:moduleCode/:threadID', isLoggedIn, function (req, res) {
+    res.render('index', {title: 'D3', content: 'index'});
+});
 /*
  * This function will route through the isLoggedIn function before sending the page
  */
 router.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile', { title: 'D3', content: 'Profile & Settings' });
 });
+
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {

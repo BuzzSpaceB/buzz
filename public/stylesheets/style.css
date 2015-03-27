@@ -134,20 +134,27 @@ h1 {
 }
 
 .pageTitle {
-    background-color: white;
-    border: 5px solid #5cb85c;
+    background-color: rgba(30, 30, 30, .7);
+    color: white;
+    /*border: 5px solid #5cb85c;*/
     padding: .1em;
+    box-shadow: 0px 0px 10px rgba(30, 30, 30, .7);
+    padding: .5em;
+
 }
 
+.navbar-default {
+    border: 0;
+}
 .spacesStyle {
     background: rgba(255, 255, 255, 0.5);
-    border: 1px solid #5cb85c;
+
     margin: auto;
 }
 
 .logo {
     text-align: center;
-    width: 100px;
+    width: 75px;
     margin: auto;
 
 }
@@ -161,7 +168,7 @@ h1 {
 .buzzSpace {
     background-color: rgba(255, 255, 255, 0.5);
     padding: 1em;
-    border: 5px solid #5cb85c;
+    box-shadow: 0px 0px 10px #5cb85c;
 
 }
 
@@ -178,7 +185,7 @@ h1 {
     background: rgba(255, 255, 255, 1);
     padding: 1em;
     padding-bottom: 2em;
-    border: 1px solid #5cb85c;
+    box-shadow: 0px 0px 10px #5cb85c;
     margin-bottom: 2%;
 
 }
