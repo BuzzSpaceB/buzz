@@ -27,6 +27,7 @@ router.get('/spaces',  isLoggedIn, function(req, res) {
     res.render('spaces', { title: 'D3', content: 'spaces' });
 });
 
+
 /*
  * This function will route through the isLoggedIn function before sending the page
  */
