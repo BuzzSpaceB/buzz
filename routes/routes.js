@@ -1,4 +1,5 @@
-var express = require('express');
+var express = require('express')
+
 var router = express.Router();
 
 
@@ -32,10 +33,8 @@ router.param("moduleCode", function (req, res, next, moduleCode) {
     next();
 })
 router.param("threadID", function (req, res, next, threadID) {
-    console.log("Validating 2" + threadID);
-    if (threadID == null) {
-        next();
-    }
+    console.log("Validating 2+" + threadID);
+    next();
 })
 router.get('/spaces/:moduleCode', isLoggedIn, function (req, res) {
     res.render('threads', {title: 'D3', content: 'This is the module code for a thread'});

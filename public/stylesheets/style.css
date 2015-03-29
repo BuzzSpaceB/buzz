@@ -1,17 +1,15 @@
 body {
-  padding: 50px;
-  font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-    background: url('bg.jpg');
-    font-size: 200%;
+
+    background: url('bg.gif') no-repeat center center fixed;;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font: 16px "Segoe UI", "Segoe WP", "Segoe UI Regular", "Helvetica Neue", Helvetica, Tahoma, "Arial Unicode MS", sans-serif;
 }
 
 a {
-  color: #00B7FF;
-}
-
-nav {
-    font-family: buzz;
-    text-transform: uppercase;
+    color: #3a633a;
 }
 
 .vertical-center {
@@ -27,59 +25,31 @@ nav {
 }
 
 button {
-    text-transform: uppercase;
 }
 
 h1 {
-    font-family: buzz;
     font-size: 150%;
-    text-transform: uppercase;
     margin: 0;
 }
 
 #signIn {
-    background-color: #5cb85c;
+    background-color: #00aff0;
     padding: .5em;
     margin: auto;
     color: white;
-    text-transform: uppercase;
+    border-radius: 15px;
 }
 
 .glyphicon, .glyphicon-info-sign {
-    margin-top: -1%;
+    margin-top: 0%;
 }
 
 
-::-webkit-input-placeholder {
-    font-family: buzz;
-    text-transform: uppercase;
-}
-
-:-moz-placeholder {
-    /* Firefox 18- */
-    font-family: buzz;
-    text-transform: uppercase;
-}
-
-::-moz-placeholder {
-    /* Firefox 19+ */
-    font-family: buzz;
-    text-transform: uppercase;
-}
-
-:-ms-input-placeholder {
-    font-family: buzz;
-    text-transform: uppercase;
-}
 
 #buzzTitle {
     color: #5cb85c;
 }
 
-.navbar {
-    text-align: center;
-    padding: 1em;
-}
 
 #brand {
     color: #5cb85c;
@@ -90,72 +60,60 @@ h1 {
     color: white;
 }
 
-.navbar-brand {
-}
-
 .form-control {
-    border: 1px solid #5cb85c;
+    border: 1px solid #00aff0;
     border-radius: 0px;
 }
 
 .form-control:focus {
-    border: 2px solid #5cb85c;
+    border: 2px solid #00aff0;
 }
 
-.navbar-default {
-    background-color: #333;
-    color: white;
-}
 
-.navbar-default .navbar-nav > li > a {
-    color: white;
-    visibility: visible;
-}
 
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
-    background: #333;
-    color: white;
-}
-
-.navbar .nav,
-.navbar .nav > li {
-    float: none;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.navbar-inner {
-    text-align: center;
-}
-
-.navbar {
-    margin: 0;
-    float: left;
-}
 
 .pageTitle {
-    background-color: rgba(30, 30, 30, .7);
-    color: white;
+    background-color: #fff;
     /*border: 5px solid #5cb85c;*/
     padding: .1em;
-    box-shadow: 0px 0px 10px rgba(30, 30, 30, .7);
+    border: 1px solid #dddddd;
     padding: .5em;
+    width: 50%;
+    margin: auto;
+    margin-top: 2%;
+    text-align: center;
 
+}
+
+.vertical-center {
+    margin-top: -5%;
+}
+
+.pageContent {
+    margin-top: 3%;
 }
 
 .navbar-default {
     border: 0;
+
 }
 .spacesStyle {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 1);
 
     margin: auto;
 }
 
 .logo {
     text-align: center;
-    width: 75px;
+    width: 10%;
     margin: auto;
+    padding: 1em;
+
+}
+
+.navLogo:hover {
+
+    opacity: 1;
 
 }
 
@@ -166,10 +124,67 @@ h1 {
 }
 
 .buzzSpace {
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 1em;
-    box-shadow: 0px 0px 10px #5cb85c;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 2em;
+    border: 1px solid #dddddd;
+    width: 85%;
+    margin: auto;
 
+}
+
+.buzzThreads {
+    padding: 1em;
+    width: 80%;
+    margin: auto;
+    background-color: rgba(92, 184, 92, 0.2);
+    float: left;
+
+}
+
+.threadProfile {
+    float: left;
+    margin-right: 5%;
+}
+
+.thread {
+    border: 1px solid #dddddd;
+    padding: 1em;
+    float: left;
+    margin-bottom: 1%;
+    background-color: white;
+    width: 100%;
+}
+
+.thread:last-child {
+    margin-bottom: 0%;
+}
+
+.buzzThreads a {
+    color: #00aff0;
+    font-weight: bold;
+}
+
+.buzzThreadTable {
+    border-collapse: separate;
+    border-spacing: 2em;
+}
+
+tr {
+
+    padding: 1em;
+}
+
+td {
+    border-top: 1px solid black;
+
+}
+
+.buzzLogin {
+    background-color: rgba(255, 255, 255, 1);
+    padding: 2em;
+    border: 1px solid #dddddd;
+    width: 50%;
+    margin: auto;
 }
 
 .buzzSpace > ul {
@@ -183,19 +198,21 @@ h1 {
 
 .space {
     background: rgba(255, 255, 255, 1);
-    padding: 1em;
-    padding-bottom: 2em;
-    box-shadow: 0px 0px 10px #5cb85c;
+    padding: 3em;
+    padding-top: 2em;
+    border: 1px solid #dddddd;
     margin-bottom: 2%;
 
+
+}
+
+.space a {
+    color: #00aff0;
+    font-weight: bold;
 }
 
 .space:last-child {
     margin-bottom: 0%;
-}
-
-.space a {
-    color: #5cb85c;
 }
 
 /* responsive text queries */
@@ -238,4 +255,168 @@ h1 {
 .center {
     width: 100%;
     margin: 0 auto;
+}
+
+.footerBuzz {
+    position: relative;
+    bottom: 0px;
+    background-color: #3a633a;
+    width: 100%;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    border-top: 5px solid #5cb85c;
+}
+
+.wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+.header {
+    background: #ededed;
+    padding: 10px;
+}
+
+.content {
+    padding-bottom: 100px; /* Height of the footer element */
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #3a633a;
+    width: 100%;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    border-top: 5px solid #5cb85c;
+}
+
+.postReplyView {
+    background-color: #5cb85c;
+    color: white;
+    border: 1px solid #dddddd;
+    padding: 1em;
+}
+
+.row {
+    margin: 0;
+    width: 100%;
+}
+
+.nav > li > a {
+    padding: 2em;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    background-color: #3a633a;
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    font-size: 18px;
+    color: #3a633a;
+}
+
+.navbar-inverse .navbar-nav > li > a:active {
+    background-color: #00aff0;
+    color: white;
+
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #53a653;
+}
+
+.navbar-inverse .navbar-nav > li > a > img {
+    padding: 0;
+}
+
+.navbar-inverse {
+    width: 50%;
+    margin: auto;
+    font-size: 120%;
+    background-color: white;
+    border: 1px solid #dddddd;
+    border-radius: 0;
+
+}
+
+#navLogo {
+    padding: 0.25em;
+}
+
+#logoImg {
+    height: 10%;
+    padding: .25em;
+}
+
+#link {
+    background-color: white;
+    color: #53a653;
+}
+
+.navbar-toggle {
+    background-color: #53a653;
+}
+
+.btn, .btn-sm, .btn-success {
+    padding: 1em;
+    font-size: 18px;
+    background-color: #00aff0;
+    border: 0;
+}
+
+.createThread {
+    position: fixed; /* keeps the lightbox window in the current viewport */
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: 2px solid #53a653;
+    background: #fff;
+    padding: 1em;
+
+}
+
+#threadPostHead {
+    background-color: #00aff0;
+    padding: .5em;
+    margin: auto;
+    color: white;
+    border-radius: 15px;
+}
+
+.createT {
+    position: fixed; /* keeps the lightbox window in the current viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.75);
+    text-align: center;
+
+}
+
+#createTr {
+    width: 100%;
+
+}
+
+#createTr input[type="text"] {
+    width: 100%;
+
+}
+
+#createTr textarea {
+    width: 100%;
+}
+
+#createTr td {
+    padding: 1em;
 }
