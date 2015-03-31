@@ -9,14 +9,12 @@
  */
 
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-module.exports = function()
-{
-    var Module = new Schema({
-        module_id           : String,           /* The id of the module */
-        name                : String,           /* The full name of the module */
-        code                : String            /* The module code */
-    });
-    mongoose.model("Module", Module);
-};
+
+var ModuleSchema = new mongoose.Schema({
+    module_id           : String,           /* The id of the module */
+    name                : String,           /* The full name of the module */
+    code                : String            /* The module code */
+});
+
+module.exports = mongoose.model("Module", ModuleSchema);

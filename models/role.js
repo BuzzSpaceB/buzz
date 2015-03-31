@@ -9,13 +9,12 @@
  */
 
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-module.exports = function()
-{
-    var Role = new Schema({
+
+    var RoleSchema = new mongoose.Schema({
         role_id         : String,           /* The id of the role */
         name            : String            /* The name of the role, as from LDAP */
     });
-    mongoose.model("Role", Role);
-};
+
+
+module.exports = mongoose.model("Role", RoleSchema);

@@ -9,17 +9,15 @@
  */
 
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-module.exports = function()
-{
-    var LoginAuthentication = new Schema({
-        user_id             : String,           /* PK, this is the user_id as in LDAP */
-        username            : String,           /* The user's preferred username, like first name */
-        password            : String,           /* The password of the user */
-        logged_in           : Boolean,          /* Flag to show whether user is logged in */
-        roles               : [{role_name : [String], module_in_roles: [String]}],      /* Roles of the user as from LDAP */
-        active_modules      : [String]          /* Modules that is active for the user */
-    });
-    mongoose.model("LoginAuthentication", LoginAuthentication);
-};
+
+var LoginAuthenticationSchema = new mongoose.Schema({
+    user_id             : String,           /* PK, this is the user_id as in LDAP */
+    username            : String,           /* The user's preferred username, like first name */
+    password            : String,           /* The password of the user */
+    logged_in           : Boolean,          /* Flag to show whether user is logged in */
+    roles               : [{role_name : [String], module_in_roles: [String]}],      /* Roles of the user as from LDAP */
+    active_modules      : [String]          /* Modules that is active for the user */
+});
+
+module.exports = mongoose.model("LoginAuthentication", LoginAuthenticationSchema);
