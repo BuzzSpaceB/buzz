@@ -8,23 +8,44 @@
             </button>
             <a id="navLogo" href="#"><img id="logoImg" src="/stylesheets/Logo.png" alt="Buzz Logo"></a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active activeNew" id="link">
-                    <a href="#" data-toggle="dropdown" id="link">Buzz <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="/">Home</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Buzz System</li>
-                        <li><a href="/spaces">Spaces</a></li>
-                        <li><a href="/profile">Profile & Settings</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-        </div>
+
+{{#if user}}
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li class="active activeNew" id="link">
+                <a href="#" data-toggle="dropdown" id="link">Buzz <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="/">Home</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Buzz System</li>
+                    <li><a href="/spaces">Spaces</a></li>
+                    <li><a href="/profile">Profile & Settings</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/profile/{{user.user_id}}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        </ul>
+    </div>
+{{else}}
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li class="active activeNew" id="link">
+                <a href="#" data-toggle="dropdown" id="link">Buzz <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="/">Home</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Buzz System</li>
+                    <li><a href="/spaces">Spaces</a></li>
+                    <li><a href="/profile">Profile & Settings</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+{{/if}}
     </div>
 </nav>
