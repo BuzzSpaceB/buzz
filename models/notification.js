@@ -1,12 +1,6 @@
-/**
- * Created by Anrich on 3/22/2015.
- */
-
 var mongoose = require('mongoose');
 
-
-
-var NotificationSchema = new mongoose.Schema({
+var NotificationSchema = mongoose.Schema({
     notification_id             : String,            /* PK */
     thread_id                   : String,           /* Notifications relate to a specific thread */
     user_id                     : String,           /* A notification will be sent to a specific user */
@@ -16,4 +10,4 @@ var NotificationSchema = new mongoose.Schema({
     read                        : Boolean           /* Flag to show notification has been read */
 });
 
-module.export = mongoose.model("Notification", NotificationSchema);
+module.export = mongoose.model("notifications", NotificationSchema);

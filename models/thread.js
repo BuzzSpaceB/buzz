@@ -1,7 +1,3 @@
-/**
- * Created by Anrich on 3/21/2015.
- */
-
 var mongoose = require('mongoose');
 
 var ThreadSchema = new mongoose.Schema({
@@ -15,4 +11,4 @@ var ThreadSchema = new mongoose.Schema({
     post_id         : String                    /* The post that is connected to the thread */
 });
 
-module.exports = mongoose.model("Thread", ThreadSchema);
+module.exports = mongoose.model("threads", ThreadSchema);

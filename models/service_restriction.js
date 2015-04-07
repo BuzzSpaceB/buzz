@@ -1,7 +1,3 @@
-/**
- * Created by Anrich on 3/31/2015.
- */
-
 var mongoose = require('mongoose');
 
 var ServiceRestrictionSchema = mongoose.Schema({
@@ -13,4 +9,4 @@ var ServiceRestrictionSchema = mongoose.Schema({
     deleted                     : Boolean
 });
 
-module.exports = mongoose.model('ServiceRestriction', ServiceRestrictionSchema);
+module.exports = mongoose.model('servicerestrictions', ServiceRestrictionSchema);

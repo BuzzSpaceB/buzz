@@ -1,7 +1,3 @@
-/**
- * Created by Anrich on 3/31/2015.
- */
-
 var mongoose = require('mongoose');
 
 var ServiceSchema = mongoose.Schema({
@@ -11,4 +7,4 @@ var ServiceSchema = mongoose.Schema({
     deleted                     : Boolean
 });
 
-module.exports = mongoose.model('Service', ServiceSchema);
+module.exports = mongoose.model('services', ServiceSchema);

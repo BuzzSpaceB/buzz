@@ -1,12 +1,6 @@
-/**
- * Created by Anrich on 3/22/2015.
- */
-
 var mongoose = require('mongoose');
 
-
-
-var AppraisalSchema = new mongoose.Schema({
+var AppraisalSchema = mongoose.Schema({
     appraisal_id            : String,       /* Primary key of the appraisal */
     name                    : String,       /* Descriptive name of the appraisal */
     description             : String,       /* More detail about the appraisal */
@@ -22,4 +16,4 @@ var AppraisalSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model("Appraisal", AppraisalSchema);
+module.exports = mongoose.model("appraisals", AppraisalSchema);
