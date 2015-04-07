@@ -5,13 +5,22 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    font: 1.1em "Segoe UI", "Segoe WP", "Segoe UI Regular", "Helvetica Neue", Helvetica, Tahoma, "Arial Unicode MS", sans-serif;
+    font: 1.4em "Segoe UI", "Segoe WP", "Segoe UI Regular", "Helvetica Neue", Helvetica, Tahoma, "Arial Unicode MS", sans-serif;
+}
+
+nav .navbar-nav
+{
+    font-size: 1em;
 }
 
 a {
     color: #3a633a;
 }
 
+#MyNavbar
+{
+    font-size: 1em;
+}
 
 .spaceOptions
 {
@@ -157,7 +166,7 @@ h1 {
 .threadProfile {
     float: left;
     margin-right: 1%;
-    font-size: 1.3em;
+    font-size: .8em;
     line-height: 25px;
     font-weight: 400;
     padding: 2em;
@@ -179,10 +188,13 @@ h1 {
     font-weight: 400;
     color: #333;
     border-bottom: 1px solid #dddddd;
-    padding-bottom: 1em;
-    min-height: 10%;
+    min-height: 20%;
 }
 
+.btn-default
+{
+    color: white;
+}
 .threadOptions
 {
     font-size: 1.3em;
@@ -341,7 +353,7 @@ td {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    font-size: 1.3em;
+    font-size: .9em;
     color: #3a633a;
 }
 
