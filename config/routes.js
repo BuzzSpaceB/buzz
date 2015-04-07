@@ -84,7 +84,7 @@ module.exports = function (router, passport) {
                 level: "Jester (level 0)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "Mediumm length reply? WHy so many whitespace? Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                moduleID: req.params.moduleID,
+                moduleID: req.params.moduleCode,
                 threadID: "2",
                 userID: "u21321312",
                 profilePick :"profile.png"
@@ -95,7 +95,7 @@ module.exports = function (router, passport) {
                 level: "Pesant (level -100)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "Very short reply.",
-                moduleID: req.params.moduleID,
+                moduleID: req.params.moduleCode,
                 threadID: "3",
                 userID: "u11234567",
                 profilePick :"profile2.gif"
@@ -132,7 +132,7 @@ module.exports = function (router, passport) {
                 level: "Pesant (level -100)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "Very short reply.",
-                moduleID: req.params.moduleID,
+                moduleID: req.params.moduleCode,
                 threadID: req.params.Thread_id,
                 userID: "u11234567",
                 profilePick :"profile2.gif"
