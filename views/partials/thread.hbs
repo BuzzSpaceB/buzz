@@ -1,0 +1,38 @@
+<div class="thread">
+    <div class="threadProfile">
+        <a href="#"><p class="text-center">{{name}}</p></a>
+        <p class="text-center">{{level}}</p>
+        <p class="text-center"><img src="/{{profilePick}}" alt="Profile Picture" height="80"></p>
+        <p class="text-center">{{date}}</p>
+    </div>
+    <div class="threadContent">
+        <p>
+            {{post}}
+        </p>
+        <div class = "threadOptions">
+            <ul class="nav navbar-nav">
+                <li class="active activeNew" id="link">
+                    <a href="#" data-toggle="dropdown" id="link">Admin Options <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/">Home</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Buzz System</li>
+                        <li><a href="/spaces">Spaces</a></li>
+                        <li><a href="/profile/{{userID}}">">Profile & Settings</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/spaces/{{moduleID}}/{{threadID}}">
+                        <span class="glyphicon glyphicon-share-alt"> </span> Reply To Post
+                    </a>
+                </li>
+                <li>
+                    <a href="/spaces/{{moduleID}}/{{threadID}}">
+                        <span class="glyphicon glyphicon-share-alt"> </span> View Replies
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

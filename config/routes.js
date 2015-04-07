@@ -45,7 +45,6 @@ module.exports = function (router, passport) {
         req.session.notice = "You have successfully been logged out " + name + "!";
     });
 
-
     /**/
     router.post('/login', passport.authenticate('local-login', {
         successRedirect: '/spaces',
@@ -55,7 +54,7 @@ module.exports = function (router, passport) {
 
     router.get('/spaces', isLoggedIn, function (req, res) {
 
-        res.render('spaces', {title: 'D3',user: req.user, content: 'spaces'});
+        res.render('spaces', {title: 'D3',  user: req.user, content: 'spaces'});
     });
 
     router.param("moduleCode", function (req, res, next, moduleCode) {
@@ -69,11 +68,77 @@ module.exports = function (router, passport) {
     });
 
     router.get('/spaces/:moduleCode', isLoggedIn, function (req, res) {
-        res.render('threads', {title: 'D3',user: req.user, content: 'This is the module code for a thread'});
+        var threads = [
+            {   heading: "Thread Heading",
+                name: "Jacob Zuma",
+                level: "Presedent (level 10)",
+                date: "Tue Apr 07 2015 13:32PM",
+                post: "I will not pay back the money.",
+                moduleID: req.params.moduleCode,
+                threadID: "1",
+                userID: "u99999999",
+                profilePick :"profile3.png"
+            },
+            {   heading: "Thread Heading Also",
+                name: "Anric van Schalkwyk",
+                level: "Jester (level 0)",
+                date: "Tue Apr 07 2015 13:32PM",
+                post: "Mediumm length reply? WHy so many whitespace? Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                moduleID: req.params.moduleID,
+                threadID: "2",
+                userID: "u21321312",
+                profilePick :"profile.png"
+            },
+            {
+                heading: "I need help with a Heading",
+                name: "Tiennie Pritchard Now with a very bvery very very very long name",
+                level: "Pesant (level -100)",
+                date: "Tue Apr 07 2015 13:32PM",
+                post: "Very short reply.",
+                moduleID: req.params.moduleID,
+                threadID: "3",
+                userID: "u11234567",
+                profilePick :"profile2.gif"
+            }
+        ];
+        res.render('threads', {title: 'D3', threads: threads, user: req.user, content: 'This is the module code for a thread'});
     });
 
     router.get('/spaces/:moduleCode/:threadID', isLoggedIn, function (req, res) {
-        res.render('index', {title: 'D3',user: req.user, content: 'index'});
+        var threads = [
+            {   heading: "Thread Heading",
+                name: "Jacob Zuma",
+                level: "Presedent (level 10)",
+                date: "Tue Apr 07 2015 13:32PM",
+                post: "I will not pay back the money.",
+                moduleID: req.params.moduleCode,
+                threadID: req.params.Thread_id,
+                userID: "u99999999",
+                profilePick :"profile3.png"
+            },
+            {   heading: "Thread Heading Also",
+                name: "Anric van Schalkwyk",
+                level: "Jester (level 0)",
+                date: "Tue Apr 07 2015 13:32PM",
+                post: "Mediumm length reply? WHy so many whitespace? Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                moduleID: req.params.moduleCode,
+                threadID: req.params.threadID,
+                userID: "u21321312",
+                profilePick :"profile.png"
+            },
+            {
+                heading: "I need help with a Heading",
+                name: "Tiennie Pritchard Now with a very bvery very very very long name",
+                level: "Pesant (level -100)",
+                date: "Tue Apr 07 2015 13:32PM",
+                post: "Very short reply.",
+                moduleID: req.params.moduleID,
+                threadID: req.params.Thread_id,
+                userID: "u11234567",
+                profilePick :"profile2.gif"
+            }
+        ];
+        res.render('threads', {title: 'D3', threads: threads, user: req.user, content: 'This is the module code for a thread'});
     });
 
     /*
