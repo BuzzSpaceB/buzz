@@ -52,9 +52,34 @@ module.exports = function (router, passport) {
         failureFlash: true
     }));
 
+    //router.get('/spaces', isLoggedIn, function (req, res) {
+    //
+    //    res.render('spaces', {title: 'D3',  user: req.user, content: 'spaces'});
+    //});
+
     router.get('/spaces', isLoggedIn, function (req, res) {
 
-        res.render('spaces', {title: 'D3',  user: req.user, content: 'spaces'});
+        var spaces = [
+            {
+                spaceName: "COS301",
+                spaceDescription: "Software Engineering",
+                latestPost: "Some post name"
+
+            },
+            {
+                spaceName: "COS 314",
+                spaceDescription: "Artificial Intelligence",
+                latestPost: "Some Other Post"
+            },
+            {
+                spaceName: "COS 332",
+                spaceDescription: "Computer Networks",
+                latestPost: "My random Post"
+            }
+        ];
+
+
+        res.render('spaces', {title: 'D3', spaces:spaces,  user: req.user, content: 'spaces'});
     });
 
     router.param("moduleID", function (req, res, next, moduleCode) {
