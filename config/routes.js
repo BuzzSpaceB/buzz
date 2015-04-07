@@ -78,7 +78,6 @@ module.exports = function (router, passport) {
             }
         ];
 
-
         res.render('spaces', {title: 'D3', spaces:spaces,  user: req.user, content: 'spaces'});
     });
 
