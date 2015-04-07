@@ -52,12 +52,36 @@ module.exports = function (router, passport) {
         failureFlash: true
     }));
 
+    //router.get('/spaces', isLoggedIn, function (req, res) {
+    //
+    //    res.render('spaces', {title: 'D3',  user: req.user, content: 'spaces'});
+    //});
+
     router.get('/spaces', isLoggedIn, function (req, res) {
 
-        res.render('spaces', {title: 'D3',  user: req.user, content: 'spaces'});
+        var spaces = [
+            {
+                spaceName: "COS301",
+                spaceDescription: "Software Engineering",
+                latestPost: "Some post name"
+
+            },
+            {
+                spaceName: "COS 314",
+                spaceDescription: "Artificial Intelligence",
+                latestPost: "Some Other Post"
+            },
+            {
+                spaceName: "COS 332",
+                spaceDescription: "Computer Networks",
+                latestPost: "My random Post"
+            }
+        ];
+
+        res.render('spaces', {title: 'D3', spaces:spaces,  user: req.user, content: 'spaces'});
     });
 
-    router.param("moduleCode", function (req, res, next, moduleCode) {
+    router.param("spaceName", function (req, res, next, moduleCode) {
         console.log("Validating " + moduleCode);
         next();
     });
@@ -67,14 +91,14 @@ module.exports = function (router, passport) {
         next();
     });
 
-    router.get('/spaces/:moduleCode', isLoggedIn, function (req, res) {
+    router.get('/spaces/:spaceName', isLoggedIn, function (req, res) {
         var threads = [
             {   heading: "Thread Heading",
                 name: "Jacob Zuma",
                 level: "Presedent (level 10)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "I will not pay back the money.",
-                moduleID: req.params.moduleCode,
+                spaceName: req.params.spaceName,
                 threadID: "1",
                 userID: "u99999999",
                 profilePick :"profile3.png"
@@ -84,7 +108,7 @@ module.exports = function (router, passport) {
                 level: "Jester (level 0)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "Mediumm length reply? WHy so many whitespace? Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                moduleID: req.params.moduleID,
+                spaceName: req.params.spaceName,
                 threadID: "2",
                 userID: "u21321312",
                 profilePick :"profile.png"
@@ -95,7 +119,7 @@ module.exports = function (router, passport) {
                 level: "Pesant (level -100)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "Very short reply.",
-                moduleID: req.params.moduleID,
+                spaceName: req.params.spaceName,
                 threadID: "3",
                 userID: "u11234567",
                 profilePick :"profile2.gif"
@@ -104,15 +128,15 @@ module.exports = function (router, passport) {
         res.render('threads', {title: 'D3', threads: threads, user: req.user, content: 'This is the module code for a thread'});
     });
 
-    router.get('/spaces/:moduleCode/:threadID', isLoggedIn, function (req, res) {
+    router.get('/spaces/:spaceName/:threadID', isLoggedIn, function (req, res) {
         var threads = [
             {   heading: "Thread Heading",
                 name: "Jacob Zuma",
                 level: "Presedent (level 10)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "I will not pay back the money.",
-                moduleID: req.params.moduleCode,
-                threadID: req.params.Thread_id,
+                spaceName: req.params.spaceName,
+                threadID: req.params.threadID,
                 userID: "u99999999",
                 profilePick :"profile3.png"
             },
@@ -121,7 +145,7 @@ module.exports = function (router, passport) {
                 level: "Jester (level 0)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "Mediumm length reply? WHy so many whitespace? Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                moduleID: req.params.moduleCode,
+                spaceName: req.params.spaceName,
                 threadID: req.params.threadID,
                 userID: "u21321312",
                 profilePick :"profile.png"
@@ -132,8 +156,8 @@ module.exports = function (router, passport) {
                 level: "Pesant (level -100)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "Very short reply.",
-                moduleID: req.params.moduleID,
-                threadID: req.params.Thread_id,
+                spaceName: req.params.spaceName,
+                threadID: req.params.threadID,
                 userID: "u11234567",
                 profilePick :"profile2.gif"
             }

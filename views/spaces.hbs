@@ -5,22 +5,12 @@
                 Your Registered Buzz Spaces
             </div>
             <br>
-            <ul>
-                <li class="space">
-                    <div class="col-md-4"><a href="/spaces/COS301">COS 301</a></div>
-                    <div class="col-md-4">Software Engineering</div>
-                    <div class="col-md-4">Latest Post By: <a href="#">Tienie</a></div>
-                </li>
-                <li class="space">
-                    <div class="col-md-4"><a href="#">COS 314</a></div>
-                    <div class="col-md-4">Artificial Intelligence</div>
-                    <div class="col-md-4">Latest Post By: <a href="#">Someone</a></div>
-                </li>
-                <li class="space">
-                    <div class="col-md-4"><a href="#">COS 332</a></div>
-                    <div class="col-md-4">Computer Networks</div>
-                    <div class="col-md-4">Latest Post By: <a href="#">Another One</a></div>
-                </li>
+            <ul class="spacesList">
+
+                {{#each spaces}}
+                    {{> space }}
+                {{/each}}
+
             </ul>
         </div>
     </div>
