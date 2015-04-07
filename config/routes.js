@@ -57,7 +57,7 @@ module.exports = function (router, passport) {
         res.render('spaces', {title: 'D3',  user: req.user, content: 'spaces'});
     });
 
-    router.param("moduleCode", function (req, res, next, moduleCode) {
+    router.param("moduleID", function (req, res, next, moduleCode) {
         console.log("Validating " + moduleCode);
         next();
     });
@@ -67,14 +67,14 @@ module.exports = function (router, passport) {
         next();
     });
 
-    router.get('/spaces/:moduleCode', isLoggedIn, function (req, res) {
+    router.get('/spaces/:moduleID', isLoggedIn, function (req, res) {
         var threads = [
             {   heading: "Thread Heading",
                 name: "Jacob Zuma",
                 level: "Presedent (level 10)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "I will not pay back the money.",
-                moduleID: req.params.moduleCode,
+                moduleID: req.params.moduleID,
                 threadID: "1",
                 userID: "u99999999",
                 profilePick :"profile3.png"
@@ -84,7 +84,7 @@ module.exports = function (router, passport) {
                 level: "Jester (level 0)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "Mediumm length reply? WHy so many whitespace? Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                moduleID: req.params.moduleCode,
+                moduleID: req.params.moduleID,
                 threadID: "2",
                 userID: "u21321312",
                 profilePick :"profile.png"
@@ -95,7 +95,7 @@ module.exports = function (router, passport) {
                 level: "Pesant (level -100)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "Very short reply.",
-                moduleID: req.params.moduleCode,
+                moduleID: req.params.moduleID,
                 threadID: "3",
                 userID: "u11234567",
                 profilePick :"profile2.gif"
@@ -104,15 +104,15 @@ module.exports = function (router, passport) {
         res.render('threads', {title: 'D3', threads: threads, user: req.user, content: 'This is the module code for a thread'});
     });
 
-    router.get('/spaces/:moduleCode/:threadID', isLoggedIn, function (req, res) {
+    router.get('/spaces/:moduleID/:threadID', isLoggedIn, function (req, res) {
         var threads = [
             {   heading: "Thread Heading",
                 name: "Jacob Zuma",
                 level: "Presedent (level 10)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "I will not pay back the money.",
-                moduleID: req.params.moduleCode,
-                threadID: req.params.Thread_id,
+                moduleID: req.params.moduleID,
+                threadID: req.params.threadID,
                 userID: "u99999999",
                 profilePick :"profile3.png"
             },
@@ -121,7 +121,7 @@ module.exports = function (router, passport) {
                 level: "Jester (level 0)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "Mediumm length reply? WHy so many whitespace? Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                moduleID: req.params.moduleCode,
+                moduleID: req.params.moduleID,
                 threadID: req.params.threadID,
                 userID: "u21321312",
                 profilePick :"profile.png"
@@ -132,8 +132,8 @@ module.exports = function (router, passport) {
                 level: "Pesant (level -100)",
                 date: "Tue Apr 07 2015 13:32PM",
                 post: "Very short reply.",
-                moduleID: req.params.moduleCode,
-                threadID: req.params.Thread_id,
+                moduleID: req.params.moduleID,
+                threadID: req.params.threadID,
                 userID: "u11234567",
                 profilePick :"profile2.gif"
             }
