@@ -1,6 +1,8 @@
-var LocalStrategy = require('passport-local').Strategy;
-var User       = require('../models/user');
-module.exports = function (passport) {
+
+module.exports = function (passport, ds) {
+
+    var LocalStrategy = require('passport-local').Strategy;
+    var User       = ds.models.user;
 
     passport.serializeUser(function (user, done) {
         done(null, user.username);
@@ -8,7 +10,7 @@ module.exports = function (passport) {
 
     passport.deserializeUser(function (username, done) {
         User.findOne({username:username}, function(err, user) {
-         done(err, user);
+            done(err, user);
         });
     });
 
@@ -27,21 +29,15 @@ module.exports = function (passport) {
             // asynchronous
             process.nextTick(function () {
                 User.findOne({ 'username' :  username }, function(err, user) {
-                    console.log("login 2");
                     if (err)
                         return done(err);
-                    console.log("login 3");
                     if (!user) {
-                        console.log("login 5");
                         return done(null, false, req.flash('loginMessage', 'No user found.'));
                     }
-                    console.log("login 4");
                     if (!user.validPassword(password)) {
-                        console.log("login 7");
                         return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
                     }
                     else {
-                        console.log("HERE 8");
                         return done(null, user);
                     }
                 });

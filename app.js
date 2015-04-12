@@ -9,6 +9,8 @@ var session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
+var ds = require('DatabaseStuff');
+ds.init(mongoose);
 
 var app = express();
 
@@ -16,16 +18,7 @@ var app = express();
 app.engine('.hbs', exphbs({defaultLayout: 'basic', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
-var configDB = require('./config/database');
-mongoose.connection.on('open', function (ref) {
-    console.log('Connected to mongo server.');
-});
-mongoose.connection.on('error', function (err) {
-    console.log('Could not connect to mongo server!');
-    console.log(err);
-});
-mongoose.connect(configDB.url); // connect to our database
-require('./config/passport')(passport);
+require('./config/passport')(passport, ds);
 
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
@@ -34,7 +27,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 // required for passport
 app.use(session({
     secret: 'nPtlGfnUhFctNuwGOCyGAcjztimSAG',
@@ -42,6 +34,7 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }));
+
 app.use(function (req, res, next) {
     res.locals.user = req.user; // This is the important line
     next();
@@ -52,9 +45,8 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes
 var router = express.Router();
-require('./config/routes')(router, passport); // load our routes and pass in our app and fully configured passport
+require('./config/routes')(router, passport, ds); // load our routes and pass in our app and fully configured passport
 app.use('/', router);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
