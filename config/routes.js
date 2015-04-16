@@ -126,6 +126,35 @@ module.exports = function (router, passport, ds) {
         }
         res.end("done");
     });
+	
+	router.post('/profile/:userID', function (req, res) {
+        console.log("POSTING NOW......................");
+        try {
+
+            var userID = req.params.userID;
+            var file = req.body.picture;
+            var fileName = req.body.fName;
+
+            uploadPPtoDB(userID,file);
+        }
+        catch(e) {
+            console.log(e);
+        }
+        res.end("done");
+    });
+
+
+    function uploadPPtoDB(userID, filename) {
+        var User = ds.models.user;
+        console.log(userID);
+
+        User.findOne({ 'user_id' :  userID }, function (err, u) {
+            if (err)
+                console.log("ERR space.findOne: " + err);
+            else
+                console.log("Found the user you were looking for:\n " + u);
+        });
+    }
 
     router.get('/admin', isLoggedInAndAdmin, function (req, res) {
 
