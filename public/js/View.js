@@ -22,6 +22,20 @@ function postThread()
         else alert(data);
     });
 }
+
+function postSpace() {
+    var subj, cont;
+    subj = $("#spaceName").val();
+    cont = $("#spaceYear").val();
+    console.log("GAH" + " " + subj + " " + cont);
+    var path = window.location.pathname;
+    $.post(path, {spaceName: subj, spaceYear: cont}, function (data) {
+        if (data === 'done') {
+            alert("post success");
+        }
+        else alert(data);
+    });
+}
 $('#exampleModal').on('show.bs.modal', function (event) {
     alert("Haha");
     var button = $(event.relatedTarget) // Button that triggered the modal

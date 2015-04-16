@@ -86,8 +86,15 @@ module.exports = function (router, passport, ds) {
         var post = req.body.content;
         var parent = null;
         var module = req.params.spaceName;
+        var content = require("Content");
+        var user = req.user;
+        var heading = req.body.subject;
+        var content = req.body.content;
+        var postType = "text";
         try {
-            createNewThread(subject, post, parent, module, req);
+            content.createNewThread(user, heading, content, postType, function (res) {
+                obj = res;
+            });
         }
         catch (e) {
             console.log(e);
@@ -123,6 +130,15 @@ module.exports = function (router, passport, ds) {
     router.get('/admin', isLoggedInAndAdmin, function (req, res) {
 
         res.render('admin', {user: req.user, isLecturer:isUserLecturer(req.user)});
+
+    });
+    router.post('/admin', isLoggedInAndAdmin, function (req, res) {
+
+        var name = req.body.spaceName;
+        var year = req.body.spaceYear;
+        console.log(name + " " + year);
+        res.end("done");
+        // res.render('admin', {user: req.user, isLecturer:isUserLecturer(req.user)});
 
     });
 
