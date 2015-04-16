@@ -13,29 +13,6 @@ module.exports = function (router, passport, ds) {
         res.render('index', {title: 'D3', user: req.user, message: req.flash('loginMessage')});
     });
 
-    /**
-     * GET home page.
-     */
-    router.get('/t', function (req, res, next) {
-        var User = ds.models.user;
-        var newStudent = new User();
-        newStudent.username = "u12345678";
-        newStudent.password = "password";
-        newStudent.save(function (err) {
-            if (err) console.log("ERR: " + err);
-            console.log("Saving: " + JSON.stringify(newStudent));
-        });
-
-        User.find(function (err, fs) {
-            if (err)
-                console.log("ERR: " + err);
-            else
-                console.log("Found: " + JSON.stringify(fs));
-        });
-
-        res.send('test file');
-    });
-
     router.get('/logout', function (req, res) {
         var name = req.user.username;
         console.log("LOGGIN OUT " + name);
@@ -51,34 +28,21 @@ module.exports = function (router, passport, ds) {
         failureFlash: true
     }));
 
-
-    //router.get('/spaces', isLoggedIn, function (req, res) {
-    //
-    //    res.render('spaces', {title: 'D3',  user: req.user, content: 'spaces'});
-    //});
-
     router.get('/spaces', isLoggedIn, function (req, res) {
-
-        var spaces = [
-            {
-                spaceName: "COS301",
-                spaceDescription: "Software Engineering",
-                latestPost: "Some post name"
-
-            },
-            {
-                spaceName: "COS314",
-                spaceDescription: "Artificial Intelligence",
-                latestPost: "Some Other Post"
-            },
-            {
-                spaceName: "COS332",
-                spaceDescription: "Computer Networks",
-                latestPost: "My random Post"
+        var Space = ds.models.space;
+        Space.find(function (err, spaces) {
+            if (err) {
+                console.log("ERR: " + err);
             }
-        ];
-
-        res.render('spaces', {title: 'D3', spaces:spaces,  user: req.user, content: 'spaces'});
+            else {
+                res.render('spaces', {
+                    title: 'D3',
+                    spaces: spaces,
+                    user: req.user,
+                    content: 'spaces'
+                });
+            }
+        });
     });
 
     router.param("spaceName", function (req, res, next, moduleCode) {
@@ -98,57 +62,47 @@ module.exports = function (router, passport, ds) {
             var parent = null;
             getChildThreads(module, parent, req, res, threadCreateCallback);
         }
-        catch(e)
-        {
+        catch (e) {
             console.log(e);
         }
 
     });
 
 
-
-    router.post('/spaces/:spaceName',function(req,res)
-    {
-        var subject=req.body.subject;
-        var post=req.body.content;
+    router.post('/spaces/:spaceName', function (req, res) {
+        var subject = req.body.subject;
+        var post = req.body.content;
         var parent = null;
         var module = req.params.spaceName;
-        try
-        {
-            createNewThread(subject, post, parent, module);
+        try {
+            createNewThread(subject, post, parent, module, req);
         }
-        catch(e)
-        {
+        catch (e) {
             console.log(e);
         }
         res.end("done");
     });
 
     router.get('/spaces/:spaceName/:threadID', isLoggedIn, function (req, res) {
-        try
-        {
+        try {
             var module = req.params.spaceName;
             var parent = req.params.threadID;
             getChildThreads(module, parent, req, res, threadCreateCallback);
         }
-        catch(e)
-        {
+        catch (e) {
             console.log(e);
         }
     });
 
-    router.post('/spaces/:spaceName/:threadID',function(req,res)
-    {
-        var subject=req.body.subject;
+    router.post('/spaces/:spaceName/:threadID', function (req, res) {
+        var subject = req.body.subject;
         var post = req.body.content;
         var parent = req.params.threadID;
         var module = req.params.spaceName;
-        try
-        {
+        try {
             createNewThread(subject, post, parent, module);
         }
-        catch(e)
-        {
+        catch (e) {
             console.log(e);
         }
         res.end("done");
@@ -174,10 +128,9 @@ module.exports = function (router, passport, ds) {
         res.redirect('/');
     }
 
-/*POSTING*/
+    /*POSTING*/
     //This is what the functional teams had to write
-    function postThreadToDatabase(JSONDetails)
-    {
+    function postThreadToDatabase(JSONDetails) {
         //Set up the schema
         var Thread = ds.models.thread;
         //Create The Thread
@@ -199,23 +152,29 @@ module.exports = function (router, passport, ds) {
     }
 
     //This is what the functional integration teams had to write
-    function createNewThread(subject, post, parentThread, module)
-    {
+    function createNewThread(subject, post, parentThread, module) {
 
         var Thread = ds.models.thread;
         //Find the level of the thread whose object_id is the same as the parent thread's ID (i.e. find the parent's level)
-        if(parentThread == null)
-        {
+        if (parentThread == null) {
             var level = 1;
             //Construct a new Thread
-            var newThreadJSON = {"ParentID" : null, "UserID" : "u12345678", "NumChildren" : 0, "Closed" : false, "Hidden" : false, "Level" : level, "Post" : post, "Subject" : subject, "Module" : module};
+            var newThreadJSON = {
+                "ParentID": null,
+                "UserID": "u12345678",
+                "NumChildren": 0,
+                "Closed": false,
+                "Hidden": false,
+                "Level": level,
+                "Post": post,
+                "Subject": subject,
+                "Module": module
+            };
             //Post it to the Database
             postThreadToDatabase(newThreadJSON);
         }
-        else
-        {
-            Thread.findOne({ '_id' : parentThread }, function(err, parentThread)
-            {
+        else {
+            Thread.findOne({'_id': parentThread}, function (err, parentThread) {
                 if (err)
                     console.log("ERR: " + err);
                 else {
@@ -225,7 +184,17 @@ module.exports = function (router, passport, ds) {
                     var level = 0;
                     level = Number(parentLevel) + 1;
                     //Construct a new Thread
-                    var newThreadJSON = {"ParentID" : parentID, "UserID" : "u12345678", "NumChildren" : 0, "Closed" : false, "Hidden" : false, "Level" : level, "Post" : post, "Subject" : subject, "Module" : module};
+                    var newThreadJSON = {
+                        "ParentID": parentID,
+                        "UserID": "u12345678",
+                        "NumChildren": 0,
+                        "Closed": false,
+                        "Hidden": false,
+                        "Level": level,
+                        "Post": post,
+                        "Subject": subject,
+                        "Module": module
+                    };
                     //Post it to the Database
                     postThreadToDatabase(newThreadJSON);
                 }
@@ -236,29 +205,26 @@ module.exports = function (router, passport, ds) {
 
     /*GETTING A POST*/
     /*This is what the functional teams had to write*/
-    function getThreadFromDatabase(module, parent, req, res, getThreadCallback)
-    {
+    function getThreadFromDatabase(module, parent, req, res, getThreadCallback) {
         //Generate Threads from Database
         var Thread = ds.models.thread;
         //If no parent just find all the level 1 threads
         //Find the parent thread
-        Thread.findOne({'_id': parent}, function (err, validThread)
-        {
+        Thread.findOne({'_id': parent}, function (err, validThread) {
             if (err)
                 console.log("ERR: " + err);
-            else
-            {
+            else {
                 //Create a JSON object consisting of that threads and return.
                 var stringifiedJSON = JSON.stringify(validThread);
                 var obj = JSON.parse(stringifiedJSON);
-                getThreadCallback(obj,parent, req, res);
+                getThreadCallback(obj, parent, req, res);
             }
         });
 
     }
+
     /*This is what the functional teams had to write*/
-    function generateThreads(validThread)
-    {
+    function generateThreads(validThread) {
         //Generate those threads
         var threads = new Array();
         var amount = Number(Object.keys(validThread).length);
@@ -299,22 +265,24 @@ module.exports = function (router, passport, ds) {
                 }
             });
         }
-        else
-        {
+        else {
             getThreadFromDatabase(module, parent, req, res, getThreadCallback);
         }
     }
 
 //Callback Functions to emulate Synchronous Behaviour
-    function getThreadCallback(parentDetails, parent, req, res)
-    {
+    function getThreadCallback(parentDetails, parent, req, res) {
         var Thread = ds.models.thread;
         var stringifiedJSON = JSON.stringify(parentDetails);
         var obj = JSON.parse(stringifiedJSON);
         var childLevel = Number(obj.level) + 1;
         var module = obj.module_id;
         //Find the threads on level of the thread for this module whose parent is the thread we navigated to
-        Thread.find({'level': childLevel, 'module_id': module, 'parent_thread_id': parent}, function (err, validThread) {
+        Thread.find({
+            'level': childLevel,
+            'module_id': module,
+            'parent_thread_id': parent
+        }, function (err, validThread) {
             if (err)
                 console.log("ERR: " + err);
             else {
@@ -324,9 +292,12 @@ module.exports = function (router, passport, ds) {
         });
     }
 
-    function threadCreateCallback(req, res, threads)
-    {
-        res.render('threads', {title: 'D3', threads: threads, user: req.user, content: 'This is the module code for a thread'});
+    function threadCreateCallback(req, res, threads) {
+        res.render('threads', {
+            title: 'D3',
+            threads: threads,
+            user: req.user,
+            content: 'This is the module code for a thread'
+        });
     }
 };
-

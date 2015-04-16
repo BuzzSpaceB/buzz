@@ -1,15 +1,17 @@
-<br>
 <div class="wrapper">
     <div class="content">
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <div class="text-center" id="signIn"><span class="glyphicon glyphicon-info-sign"></span> COS 301 -
-                    Software Engineering
+        {{#if space}}
+            <br>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="text-center" id="signIn"><span class="glyphicon glyphicon-info-sign"></span>
+                        {{space.module_id}} -  {{space.academic_year}}
+                    </div>
                 </div>
+                <div class="col-md-4"></div>
             </div>
-            <div class="col-md-4"></div>
-        </div>
+        {{/if}}
         <div class="row">
             <div class="col-md-4"></div>
                 <div class="center">
@@ -51,8 +53,5 @@
                     </div>
                 </div>
             </div>
-    </div>
-    <div class="footer">
-        &copy; 2015 University Of Pretoria
     </div>
 </div>
