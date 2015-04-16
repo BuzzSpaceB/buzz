@@ -1,4 +1,7 @@
-
+function processResource() {
+    var resource = document.getElementById('resource');
+    alert(resource.value);
+}
 function postThread()
 {
     var subj, cont;
