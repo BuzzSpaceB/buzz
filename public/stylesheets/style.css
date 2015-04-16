@@ -21,6 +21,7 @@ nav .navbar-nav
 
 a {
     color: #3a633a;
+    padding: 0;
 }
 
 #MyNavbar
@@ -177,8 +178,12 @@ h1 {
     padding: 2em;
     background-color: white;
     height: inherit;
+    width: 100%;
 }
 
+.nav > li > a.link {
+    padding: 1em;
+}
 .threadContent
 {
     padding: 2em;
