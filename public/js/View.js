@@ -1,9 +1,4 @@
-function processResource() {
-    var resource = document.getElementById('resource');
-    var str = resource.value
-    var fileName = str.slice(12);
-    alert(fileName);
-}
+
 function postThread()
 {
     var subj, cont;
