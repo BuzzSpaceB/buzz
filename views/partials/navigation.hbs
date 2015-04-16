@@ -1,29 +1,32 @@
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a id="navLogo" href="#"><img id="logoImg" src="/stylesheets/Logo.png" alt="Buzz Logo"></a>
+<div class="container-fluid">
+    <nav class="navbar navbar-inverse">
+        <div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#"><img class="img-responsive" src="/stylesheets/Logo.png" alt="Buzz Logo" width="130"></a>
+            </div>
+            {{#if user}}
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/spaces">Spaces</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/profile/{{user.user_id}}"><span class="glyphicon glyphicon-user"></span>
+                            Profile</a></li>
+                        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                </div>
+            {{else}}
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                </div>
+            {{/if}}
         </div>
-{{#if user}}
-    <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-            <li><a href="/spaces">Spaces</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="/profile/{{user.user_id}}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-        </ul>
-    </div>
-{{else}}
-    <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-    </div>
-{{/if}}
-    </div>
-</nav>
+    </nav>
+</div>

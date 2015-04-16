@@ -1,48 +1,39 @@
-<div class="row vertical-center">
-    <div class="container containerBg">
-        <div>
-            {{#if notice}}
-                <p class="alert alert-info" role="alert">{{notice}}</p>
-            {{/if}}
-            <div class="buzzLogin">
-                <div class="text-center" id="signIn"><span class="glyphicon glyphicon-info-sign"></span> Please sign in
-                </div>
-                <br>
-                    {{#if message}}
-                        <div class="alert alert-danger" role="alert">{{message}}</div>
-                    {{/if}}
-                <form action="/login" method="post">
-                    <fieldset>
-                        <div class="form-group">
-                            <p class="text-left">Student Number</p>
-
-                            <input class="form-control" name="username" type="text"
-                                   required="required" autofocus="autofocus" pattern="u[0-9]{8}"
-                                   oninvalid="setCustomValidity('Please enter your student number. u + 8 digit student number.')"
-                                   oninput="setCustomValidity('')"
-                                   value="u0000000"/>
-                        </div>
-
-                        <div class="form-group">
-                            <p class="text-left">Password</p>
-                            <input class="form-control" name="password" type="password" value="password"
-                                   required="required"/>
-                        </div>
-                        <br>
-
-                        <div class="col-md-6">
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-sm btn-success">Need Help?</button>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-sm btn-success">Sign in</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
+<div class="row">
+    <div>
+        {{#if notice}}
+            <p class="alert alert-info" role="alert">{{notice}}</p>
+        {{/if}}
+        <div class="buzzLogin">
+            <div class="text-center" id="signIn"><span class="glyphicon glyphicon-info-sign"></span> Please sign in
             </div>
+            <br>
+            {{#if message}}
+                <div class="alert alert-danger" role="alert">{{message}}</div>
+            {{/if}}
+            <form action="/login" method="post">
+                <fieldset>
+                    <div class="form-group">
+                        <p class="text-left">Student Number</p>
+                        <input class="form-control" name="username" type="text"
+                               required="required" autofocus="autofocus" pattern="u[0-9]{8}"
+                               oninvalid="setCustomValidity('Please enter your student number. u + 8 digit student number.')"
+                               oninput="setCustomValidity('')"
+                               value="u0000000"/>
+                    </div>
+                    <div class="form-group">
+                        <p class="text-left">Password</p>
+                        <input class="form-control" name="password" type="password" value="password"
+                               required="required"/>
+                    </div>
+                    <br>
+
+                    <div>
+                        <button type="submit" class="btn btn-sm btn-success">Sign in</button>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     </div>
 </div>
+
+
