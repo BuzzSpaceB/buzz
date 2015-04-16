@@ -112,8 +112,17 @@ module.exports = function (router, passport, ds) {
     /*
      * This function will route through the isLoggedIn function before sending the page
      */
-    router.get('/profile', isLoggedIn, function (req, res) {
-        res.render('profile', {title: 'D3', content: 'Profile & Settings'});
+    router.get('/profile/:userID', isLoggedIn, function (req, res) {
+        var profilePicture = "/profilePic/";
+        profilePicture += req.params.userID;
+        profilePicture += ".jpg";
+        console.log(profilePicture + req.user.username);
+        res.render('profile', {
+            title: 'D3',
+            user: req.user,
+            profilePic: profilePicture,
+            content: 'spaces'
+        });
     });
 
     // route middleware to make sure a user is logged in

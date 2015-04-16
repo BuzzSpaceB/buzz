@@ -1,1 +1,39 @@
-{{content}}
+<div class="profile">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="text-center" id="signIn">
+                Your Profile Picture
+            </div>
+            <br>
+
+            <div class="text-center">
+                <img class="profilePic" src="{{profilePic}}" alt="Profile Pic of {{user}}">
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input-1" id="signIn" class="control-label">Select A New Profile Picture:</label>
+                <br>
+                <br>
+                <input id="resource" type="file" style="display:none">
+
+                <div class="input-append">
+                    <input id="resourceC" class="input-large" type="text">
+                    <br>
+                    <br>
+                    <button class="browseBtn" onclick="$('input[id=resource]').click();processResource();">Browse
+                    </button>
+                    <button type="button" class="browseBtn" onclick="">Upload</button>
+                </div>
+                <script type="text/javascript">
+                    $('input[id=resource]').change(function () {
+                        $('#photoCover').val($(this).val());
+                    });
+                </script>
+            </div>
+
+        </div>
+
+    </div>
+</div>
