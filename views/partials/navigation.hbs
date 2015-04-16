@@ -15,10 +15,13 @@
                         <li><a href="/spaces">Spaces</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/profile/{{user.user_id}}"><span class="glyphicon glyphicon-user"></span>
-                            Profile</a></li>
+                        <li><a href="/profile/{{user.user_id}}"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
+                        {{#if isLecturer}}
+                            <li><a href="/admin"><span class="glyphicon glyphicon-cog"></span> Admin</a></li>
+                        {{/if}}
                         <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                     </ul>
+
                 </div>
             {{else}}
                 <div class="collapse navbar-collapse" id="myNavbar">

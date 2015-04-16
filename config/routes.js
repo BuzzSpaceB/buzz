@@ -10,7 +10,7 @@ module.exports = function (router, passport, ds) {
     });
 
     router.get('/', function (req, res, next) {
-        res.render('index', {title: 'D3', user: req.user, message: req.flash('loginMessage')});
+        res.render('index', {title: 'BUZZ', user: req.user, message: req.flash('loginMessage')});
     });
 
     router.get('/logout', function (req, res) {
@@ -36,10 +36,11 @@ module.exports = function (router, passport, ds) {
             }
             else {
                 res.render('spaces', {
-                    title: 'D3',
+                    title: 'BUZZ',
                     spaces: spaces,
                     user: req.user,
-                    content: 'spaces'
+                    content: 'spaces',
+                    isLecturer:isUserLecturer(req.user)
                 });
             }
         });
@@ -67,7 +68,18 @@ module.exports = function (router, passport, ds) {
         }
 
     });
+       router.get('/spaces/:spaceName', isLoggedIn, function (req, res) {
 
+        try {
+            var module = req.params.spaceName;
+            var parent = null;
+            getChildThreads(module, parent, req, res, threadCreateCallback);
+        }
+        catch (e) {
+            console.log(e);
+        }
+
+    });
 
     router.post('/spaces/:spaceName', function (req, res) {
         var subject = req.body.subject;
@@ -108,6 +120,11 @@ module.exports = function (router, passport, ds) {
         res.end("done");
     });
 
+    router.get('/admin', isLoggedInAndAdmin, function (req, res) {
+
+        res.render('admin', {user: req.user, isLecturer:isUserLecturer(req.user)});
+
+    });
 
     /*
      * This function will route through the isLoggedIn function before sending the page
@@ -115,14 +132,46 @@ module.exports = function (router, passport, ds) {
     router.get('/profile/:userID', isLoggedIn, function (req, res) {
         console.log(req.user.profile_pic);
         res.render('profile', {
-            title: 'D3',
+            title: 'BUZZ',
             user: req.user,
             profilePic: "/profilePic/" + req.user.profile_pic,
-            content: 'spaces'
+            content: 'spaces',
+            isLecturer:isUserLecturer(req.user)
         });
     });
 
     // route middleware to make sure a user is logged in
+    function isLoggedIn(req, res, next) {
+        console.log("In function isLoggedIn: \tREQ:");
+        console.log(req.user);
+        // if user is authenticated in the session, carry on
+        if (req.user)
+            return next();
+
+        // if they aren't redirect them to the home page
+        res.redirect('/');
+    }
+
+    function isUserLecturer(user) {
+        var roles = user.roles;
+        for(var i = 0; i < roles.length; i++)
+        {
+            if(roles[i].role_name == "Lecturer")
+                return true;
+        }
+        return false;
+    }
+
+    function  isLoggedInAndAdmin(req, res, next){
+        // if user is authenticated and a lecturer in the session, carry on
+        if (req.user && isUserLecturer(req.user)) {
+            return next();
+        }
+        // if they aren't redirect them to the home page
+        res.redirect('/spaces');
+    }
+
+    // route middleware to make sure a user is logged in and an admin i.e. a lecturer
     function isLoggedIn(req, res, next) {
         console.log("In function isLoggedIn: \tREQ:");
         console.log(req.user);
@@ -181,9 +230,9 @@ module.exports = function (router, passport, ds) {
         }
         else {
             Thread.findOne({'_id': parentThread}, function (err, parentThread) {
-                if (err)
+                if (err) {
                     console.log("ERR: " + err);
-                else {
+                } else {
                     //Set the child thread's level
                     var parentLevel = parentThread.level;
                     var parentID = parentThread._id;
@@ -206,7 +255,6 @@ module.exports = function (router, passport, ds) {
                 }
             });
         }
-
     }
 
     /*GETTING A POST*/
@@ -226,7 +274,6 @@ module.exports = function (router, passport, ds) {
                 getThreadCallback(obj, parent, req, res);
             }
         });
-
     }
 
     /*This is what the functional teams had to write*/
@@ -300,7 +347,8 @@ module.exports = function (router, passport, ds) {
 
     function threadCreateCallback(req, res, threads) {
         res.render('threads', {
-            title: 'D3',
+            title: 'BUZZ',
+            isLecturer:isUserLecturer(req.user),
             threads: threads,
             user: req.user,
             content: 'This is the module code for a thread'
