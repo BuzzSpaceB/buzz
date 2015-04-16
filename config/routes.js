@@ -150,7 +150,7 @@ module.exports = function (router, passport, ds) {
 
         User.findOne({ 'user_id' :  userID }, function (err, u) {
             if (err)
-                console.log("ERR space.findOne: " + err);
+                console.log("ERR User.findOne: " + err);
             else
                 console.log("Found the user you were looking for:\n " + u);
         });
