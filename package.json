@@ -21,7 +21,7 @@
     },
     {
       "name": "Vivian Venter",
-      "email": "13238435@tuks.co.za"
+      "email": "u13238435@tuks.co.za"
     }
   ],
   "dependencies": {
@@ -40,7 +40,7 @@
     "passport-local": "^1.0.0",
     "serve-favicon": "^2.2.0",
     "DatabaseStuff": "git://github.com/BuzzSpaceB/DatabaseStuff#master",
-    "Contenet": "git://github.com/BuzzSpaceB/Content#master",
+    "Content": "git://github.com/BuzzSpaceB/Content#master",
     "Infrastructure": "https://github.com/BuzzSpaceB/Infrastructure/tarball/master"
   }
 }
