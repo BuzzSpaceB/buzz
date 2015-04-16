@@ -1,26 +1,27 @@
 {
-  "name": "d3",
-  "version": "0.0.0",
+  "name": "Buzz",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
+  "main": "./bin/www",
   "contributors": [
+    {
+      "name": "Anrich van Schalkwyk",
+      "email": "130244278@tuks.co.za"
+    },
     {
       "name": "Thinus Naude",
       "email": "u13019602@tuks.co.za"
     },
     {
-      "name": "Anrich van Schalkwyk",
-      "email": "@gmail.com"
-    },
-    {
       "name": "Tiennie Pritchard",
-      "email": "@gmail.com"
+      "email": "1205674110@tuks.co.za"
     },
     {
       "name": "Vivian Venter",
-      "email": "u13238435@tuks.co.za"
+      "email": "13238435@tuks.co.za"
     }
   ],
   "dependencies": {
@@ -38,7 +39,8 @@
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
     "serve-favicon": "^2.2.0",
-    "DatabaseStuff": "git://github.com/BuzzSpaceB/DatabaseStuff#master"
-	"Content": "git://github.com/BuzzSpaceB/Content#master"
+    "DatabaseStuff": "git://github.com/BuzzSpaceB/DatabaseStuff#master",
+    "Contenet": "git://github.com/BuzzSpaceB/Content#master",
+    "Infrastructure": "https://github.com/BuzzSpaceB/Infrastructure/tarball/master"
   }
 }
