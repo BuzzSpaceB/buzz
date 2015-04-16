@@ -24,12 +24,29 @@
                     <br>
                     <button class="browseBtn" onclick="$('input[id=resource]').click();processResource();">Browse
                     </button>
-                    <button type="button" class="browseBtn" onclick="">Upload</button>
+                    <button id="uploadPP" type="button" class="browseBtn" onclick="uploadPP();">Upload</button>
                 </div>
                 <script type="text/javascript">
                     $('input[id=resource]').change(function () {
                         $('#resourceC').val($(this).val());
                     });
+
+                    function uploadPP() {
+                        var pic = $("#resource").val();
+                        var fileName = pic.slice(12);
+                        var path = window.location.pathname;
+
+                        $.post(path,{picture: pic, fName: fileName}, function(data)
+                        {
+                            if(data==='done')
+                            {
+                                alert(fileName + " could not been set as your new Profile Picture, since the resources team did not make provision for an profile picture to be stored on the database.\n");
+                            }
+                            else alert(data);
+                        });
+
+                    };
+
                 </script>
             </div>
 
