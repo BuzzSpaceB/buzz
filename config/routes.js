@@ -240,7 +240,7 @@ module.exports = function (router, passport, ds) {
                 spaceName: obj[i]["module_id"],
                 threadID: obj[i]["_id"],
                 userID: obj[i]["user_id"],
-                profilePick: "profile3.png",
+                profilePick: "u00000001.jpg",
                 moduleID: obj[i]["module_id"]
             };
 
